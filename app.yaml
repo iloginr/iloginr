@@ -1,8 +1,15 @@
 application: iloginr
-version: 2
+version: 1
 runtime: python
 api_version: 1
 
 handlers:
+- url: /favicon\.ico
+  static_files: static/images/favicon.ico
+  upload: static/images/favicon\.ico
+- url: /stylesheets
+  static_dir: static/css
+- url: /scripts
+  static_dir: static/js
 - url: /.*
-  script: main.py
+  script: views/index.py
