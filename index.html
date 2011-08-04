@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta name="title" content="iloginr: login anywhere, anytime" />
+    <meta name="description" content="Single Sign-On script (SSO) that allows you to generate passwords for each online service you're using" />
+    <title>iloginr: login anywhere, anytime</title>
+
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="google-site-verification" content="4ShjLAwqSzcUvoP3KUGOdzRdQ9952AG72taDwyq9Sxs" />
+
+    <style type="text/css">
+    body {
+      background: #B5D5E4;
+      margin: 0px;
+      padding-top: 1em;
+    }
+
+    h1 {
+      margin: 0px;
+      background: #493E2B;
+      text-align: center;
+      padding: 0.5em;
+    }
+
+    h1 a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .content {
+      max-width: 400px;
+      margin: auto;
+      background: #fff;
+      min-height: 12em;
+      box-shadow: 10px 10px 5px #888888;
+      border-radius: 10px;
+      padding: 0.5em;
+    }
+
+    .content form {
+      padding-top: 0.5em;
+    }
+
+    .content dl {
+     margin: 0px;
+    }
+
+    .content dt {
+      float: left;
+      clear: left;
+      width: 40%;
+      font-size: 120%;
+    }
+
+    .content dd {
+      float: left;
+      width: 59%;
+      margin: 0px;
+    }
+
+    .content input {
+      width: 100%;
+      font-size: 120%;
+    }
+
+    .content input[type=text], .content input[type=password] {
+      border: 1px groove #ccc;
+    }
+
+    .content input[type=submit] {
+      padding: 0.5em;
+    }
+
+    .content dd.buttons {
+      width: 100%;
+    }
+
+    .results {
+      clear: both;
+      padding: 1em;
+      text-align: center;
+      font-size: 150%;
+      color: green;
+      background-color: #ff9;
+    }
+
+    .er {
+      color: yellow;
+    }
+    </style>
+  </head>
+  <body>
+    <div class="content">
+      <h1>
+        <a title="iloginr" href="/">
+          <strong>ilogin</strong><strong class="er">r</strong>
+        </a>
+      </h1>
+      <form action="." method="post">
+        <dl>
+          <dt><label for="service">Service / URL</label></dt>
+          <dd><input type="text" name="service" id="service" /></dd>
+          <dt><label for="password">Master password</label></dt>
+          <dd><input type="password" name="password" id="password" /></dd>
+          <dt></dt>
+          <dd class="buttons"><input type="submit" name="submit" value="ilogin" /></dd>
+      </form>
+
+      {% if password %}
+      <div class="results">
+        {{ password }}
+      </div>
+      {% endif %}
+    </div>
+
+  <!-- Google Analitycs -->
+  <script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-24939558-1']);
+    _gaq.push(['_setDomainName', '.iloginr.com']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+  </script>
+  </body>
+</html>
