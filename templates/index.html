@@ -19,6 +19,7 @@
       <h1>
         <a title="iloginr" href="/">
           <strong>ilogin</strong><strong class="er">r</strong>
+          <strong>2.0</strong>
         </a>
       </h1>
       <form action="." method="post">
@@ -27,7 +28,34 @@
           <dd><input type="text" name="service" id="service" /></dd>
           <dt><label for="password">Master password</label></dt>
           <dd><input type="password" name="password" id="password" /></dd>
-          <dt></dt>
+          <dd style="display: inline"><input type="checkbox" name="advanced" id="advanced" /></dd>
+          <dt style="display: inline"><label for="advanced">advanced option</label></dt>
+
+          <div class="advanced">
+            <dt><label for="appVersion">App Version</label></dt>
+            <dd>
+              <select name="appVersion" id="appVersion">
+                <option value="2" selected="selected">2.0</option>
+                <option value="1">1.0</option>
+              </select>
+            </dd>
+
+            <dt><label for="caps">Use capital letters</label></dt>
+            <dd><input type="checkbox" name="caps" id="caps" /></dd>
+
+            <dt><label for="numbers">Use numbers</label></dt>
+            <dd><input type="checkbox" name="numbers" id="numbers" /></dd>
+
+            <dt><label for="special">Use special characters</label></dt>
+            <dd><input type="checkbox" name="special" id="special" /></dd>
+
+            <dt><label for="length">password length</label></dt>
+            <dd><input type="number" name="length" id="length" value="16" /></dd>
+
+            <dt><label for="version">Version</label></dt>
+            <dd><input type="number" name="version" id="version" value="1" /></dd>
+
+          </div>
           <dd class="buttons"><input type="submit" name="submit" value="ilogin" /></dd>
       </form>
 
