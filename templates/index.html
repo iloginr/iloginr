@@ -28,8 +28,10 @@
           <dd><input type="text" name="service" id="service" /></dd>
           <dt><label for="password">Master password</label></dt>
           <dd><input type="password" name="password" id="password" /></dd>
-          <dd style="display: inline"><input type="checkbox" name="advanced" id="advanced" /></dd>
-          <dt style="display: inline"><label for="advanced">advanced option</label></dt>
+
+          <dt style="float: left; padding: 0.5em 0"><label for="advanced">Advanced option</label></dt>
+          <dd style="float: right; width: auto; padding: 1em 0"><input type="checkbox" name="advanced" id="advanced" /></dd>
+
 
           <div class="advanced">
             <dt><label for="appVersion">App Version</label></dt>
@@ -53,16 +55,22 @@
             <dt><label for="length">Password length</label></dt>
             <dd><input type="number" name="length" id="length" value="16" /></dd>
 
-            <dt><label for="version">Version</label></dt>
+            <dt><label for="version">Password version</label></dt>
             <dd><input type="number" name="version" id="version" value="1" /></dd>
 
           </div>
           <dd class="buttons"><input type="submit" name="submit" value="ilogin" /></dd>
       </form>
 
-      <div class="results"></div>
+      <div class="results">
+        <div class="acValue"></div>
+        <div id="acSpaceNote">No need to memorize this password. Ignore spaces.</div>
+      </div>
     </div>
 
+  <div class="footer">
+    <a href="https://pypi.python.org/pypi/ilogin">&copy; GPL - Alin Voinea</a>
+  </div>
   <!-- Scripts -->
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js" type="text/javascript"></script>
   <script src="/scripts/iloginr.js" type="text/javascript"></script>

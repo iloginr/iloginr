@@ -12,6 +12,18 @@ h1 {
   padding: 0.5em;
 }
 
+.footer {
+  background: #493E2B;
+  text-align: center;
+  padding: 1em;
+}
+
+.footer a, .footer a:link, .footer a:visited, .footer a:hover {
+  color: #fff;
+  font-size: 90%;
+  text-decoration: none;
+}
+
 h1 a {
   color: #fff;
   text-decoration: none;
@@ -22,6 +34,7 @@ h1 a {
 
 .advanced {
   display: none;
+  clear: both;
 }
 
 .content form {
@@ -37,11 +50,28 @@ h1 a {
 }
 
 .content dd {
-  width: 99%;
   margin: 0px;
 }
 
-.advanced dt, .advanced dd {
+.advanced dt {
+  clear: both;
+  float: left;
+  width: auto;
+  padding: 0.5em;
+}
+
+.advanced dd {
+  float: right;
+  width: auto;
+  padding: 0.5em;
+}
+
+.advanced input[type=number] {
+  width: 50px;
+}
+
+label {
+  cursor: pointer;
 }
 
 .content input[type=text], .content input[type=password], .content input[type=submit] {
@@ -63,13 +93,28 @@ h1 a {
 
 .results {
   clear: both;
-  padding: 1em;
-  text-align: center;
-  font-size: 150%;
-  color: green;
   background-color: #ff9;
+  padding: 1em;
 }
 
 .er {
   color: yellow;
 }
+
+.acValue {
+  text-align: center;
+  font-size: 150%;
+  color: green;
+}
+
+.acFragment {
+  padding: 0 0.15em;
+}
+
+#acSpaceNote {
+  font-size: 1.0em;
+  color: #777;
+  margin: 1px 0 12px 0;
+  text-align: center;
+}
+

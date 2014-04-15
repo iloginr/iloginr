@@ -42,7 +42,8 @@ iloginr.Box.prototype = {
     passwd = new jsSHA(passwd, "TEXT");
     passwd = passwd.getHash("SHA-256", "HEX");
     passwd = passwd.slice(55, 64);
-    self.output.html(passwd).show();
+    self.output.find('.acValue').html(passwd)
+    self.output.show();
   },
 
   submit3: function(){
@@ -65,7 +66,7 @@ iloginr.Box.prototype = {
       }
 
       var number = 0;
-      var numbers = chunk.match(/\d+/g);
+      var numbers = chunk.match(/\d+/g) || [];
       numbers = $.map(numbers, function(nr){
         nr = parseInt(nr, 10);
         number += nr;
@@ -76,7 +77,7 @@ iloginr.Box.prototype = {
       if(self.appVersion.val() == '2'){
         letters = chunk.match(/[a-z]]/g) || [];
       }else{
-        letters = chunk.match(/[a-z]/g);
+        letters = chunk.match(/[a-z]/g) || [];
       }
 
       letters = $.map(letters, function(letter){
@@ -114,8 +115,26 @@ iloginr.Box.prototype = {
       newpwd.push(letter.toString());
     }
 
-    newpwd = newpwd.join("");
-    self.output.html(newpwd).show();
+    var nextpwd = [];
+    jQuery.each(newpwd, function(idx, letter){
+      if( idx && (idx) % 4 === 0 ){
+        nextpwd.push('|');
+      }
+      nextpwd.push(letter);
+    });
+
+    nextpwd = nextpwd.join("").split('|');
+
+    var html = jQuery('<div>');
+    jQuery.each(nextpwd, function(idx, chunk){
+      var span = jQuery('<span>')
+        .addClass('acFragment')
+        .text(chunk)
+        .appendTo(html);
+    });
+
+    self.output.find('.acValue').html(html);
+    self.output.show();
   },
 
   advancedOptions: function(){
