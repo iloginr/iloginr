@@ -27,10 +27,10 @@ iloginr.Box.prototype = {
 
     self.form.submit(function(evt){
       evt.preventDefault();
-      if(self.appVersion.val() != '2'){
+      if(self.appVersion.val() == '1'){
         self.submit();
       }else{
-        self.submit2();
+        self.submit3();
       }
       return false;
     });
@@ -45,25 +45,77 @@ iloginr.Box.prototype = {
     self.output.html(passwd).show();
   },
 
-  submit2: function(){
+  submit3: function(){
     var self = this;
     var version = parseInt(self.pwdVersion.val(), 10);
-    var passwd = self.service.val() + ':' + self.passwd.val() + ':' + version;
+    var passwd = self.service.val().trim() + ':' + self.passwd.val().trim() + ':' + version;
+
     passwd = new jsSHA(passwd, "TEXT");
     passwd = passwd.getHash("SHA-512", "HEX");
-    self.output.html(passwd).show();
 
     var newpwd = [];
     var length = parseInt(self.pwdLength.val(), 10);
     for(var idx=0; idx<length; idx++){
-      var stop = length / 128;
+      var stop = Math.floor(128 / length);
       var start = idx * stop;
       var end  = idx * stop + stop;
       var chunk = passwd.slice(start, end);
       if(!chunk.length){
         break;
       }
+
+      var number = 0;
+      var numbers = chunk.match(/\d+/g);
+      numbers = $.map(numbers, function(nr){
+        nr = parseInt(nr, 10);
+        number += nr;
+        return nr;
+      });
+
+      var letters;
+      if(self.appVersion.val() == '2'){
+        letters = chunk.match(/[a-z]]/g) || [];
+      }else{
+        letters = chunk.match(/[a-z]/g);
+      }
+
+      letters = $.map(letters, function(letter){
+        letter = letter.charCodeAt();
+        number += letter;
+        return letter;
+      });
+
+      var letter;
+      if( (idx+1) % 4 === 0 && self.numbers.is(':checked') ){
+        letter = number % 10;
+        if(letter === 0 || letter === 1){
+          letter = 9;
+        }
+      }else if( (idx+1) % 5 === 0 && self.caps.is(':checked') ){
+        letter = number % 25 + 97;
+        letter = String.fromCharCode(letter);
+        letter = letter.toUpperCase();
+        if(letter == "L"){
+          letter = "M";
+        }else if(letter == "O"){
+          letter = "U";
+        }
+      }else if( (idx+1) % 7 === 0 && self.special.is(":checked") ){
+        letter = number % 14 + 33;
+        letter = String.fromCharCode(letter);
+      }else{
+        letter = number % 25 + 97;
+        letter = String.fromCharCode(letter);
+        if(letter == "l"){
+          letter = "k";
+        }
+      }
+
+      newpwd.push(letter.toString());
     }
+
+    newpwd = newpwd.join("");
+    self.output.html(newpwd).show();
   },
 
   advancedOptions: function(){

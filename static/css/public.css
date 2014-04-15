@@ -42,7 +42,6 @@ h1 a {
 }
 
 .advanced dt, .advanced dd {
-  display: inline;
 }
 
 .content input[type=text], .content input[type=password], .content input[type=submit] {
